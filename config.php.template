@@ -1,0 +1,41 @@
+<?php
+$CONFIG = array (
+  'mail_domain' => '@mailDomain@',
+  'mail_smtpmode' => 'sendmail',
+  'datadirectory' => '@dataDir@',
+  'apps_paths' =>
+  array (
+    0 =>
+    array (
+      'path' => '@apps2Dir@',
+      'url' => '/apps2',
+      'writable' => true,
+    ),
+    1 =>
+    array (
+      'path' => '@appsDir@',
+      'url' => '/apps',
+      'writable' => false,
+    ),
+  ),
+  'trusted_domains' =>
+  array (
+    0 => '@domain@',
+  ),
+  'overwrite.cli.url' => 'https://@domain@',
+  'dbtype' => 'pgsql',
+  'dbname' => '@dbName@',
+  'dbhost' => 'localhost',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'dbuser' => '@userName@',
+  'dbpassword' => '@password@',
+  'mail_from_address' => 'repository-noreply',
+  'mail_smtpauthtype' => 'LOGIN',
+  'logfile' => '@homeDir@/nextcloud.log',
+  'loglevel' => 2,
+  'maintenance' => false,
+  'debug' => false,
+  'skeletondirectory' => '@homeDir@/skeleton',
+  'updater.release.channel' => 'production',
+);
