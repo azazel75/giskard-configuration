@@ -27,6 +27,7 @@
     networking.hosts."127.0.0.1" = [
       "localhost"
       "files.azazel.it"
+      "azazel.it"
     ];
 
 

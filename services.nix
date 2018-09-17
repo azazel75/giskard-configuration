@@ -10,6 +10,7 @@
   imports = [
     ./samba.nix
     ./nginx.nix
+    ./postfix.nix
   ];
   services = {
     openssh.enable = true;

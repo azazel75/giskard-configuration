@@ -12,11 +12,16 @@
     clientMaxBodySize = "1G";
     recommendedOptimisation = true;
     recommendedProxySettings = true;
-    virtualHosts."files.azazel.it" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://files.azazel.it:18080";
+    virtualHosts = {
+      "files.azazel.it" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://files.azazel.it:18080";
+        };
+      };
+      "azazel.it" = {
+        enableACME = true;
       };
     };
   };
