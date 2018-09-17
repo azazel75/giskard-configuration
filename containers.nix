@@ -8,6 +8,13 @@
 
 { config, pkgs, ... }: {
     containers.nextcloud = {
+      autoStart = true;
+      bindMounts = {
+        "/var/lib/nextcloud" = {
+          hostPath = "/mnt/data/nextcloud";
+          isReadOnly = false;
+        };
+      };
       config = import ./nextcloud.nix;
     };
   }
