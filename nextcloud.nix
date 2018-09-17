@@ -79,73 +79,90 @@
           rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
           rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
           rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
-        '';
-        locations = {
-          "/robots.txt".extraConfig = ''
-            allow all;
-            log_not_found off;
-            access_log off;
-          '';
-          "= /.well-known/carddav".extraConfig = ''
-            return 301 $scheme://$host/remote.php/dav;
-          '';
-          "= /.well-known/caldav".extraConfig = ''
-            return 301 $scheme://$host/remote.php/dav;
-          '';
-          "/".extraConfig = ''
-            rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
-            try_files $uri $uri/ =404;
-          '';
-          "^~ /data".extraConfig = ''
-            internal;
-          '';
-          "^~ /apps2".extraConfig = ''
+          location = /robots.txt {
+              allow all;
+              log_not_found off;
+              access_log off;
+          }
+
+          # The following 2 rules are only needed for the user_webfinger app.
+          # Uncomment it if you're planning to use this app.
+          #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+          #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json
+          # last;
+
+          location = /.well-known/carddav {
+              return 301 $scheme://$host/remote.php/dav;
+          }
+
+          location = /.well-known/caldav {
+              return 301 $scheme://$host/remote.php/dav;
+          }
+
+          location / {
+              rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
+              try_files $uri $uri/ =404;
+              #rewrite ^ /index.php$uri;
+          }
+
+          location ^~ /data {
+              internal;
+          }
+
+          location ^~ /apps2 {
             root ${nc.homeDir};
-          '';
-          "~ ^/(?:\.htaccess|config|db_structure\.xml|README)".extraConfig = ''
-            deny all;
-          '';
-          "~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/".extraConfig = ''
-            deny all;
-          '';
-          "~ ^/(?:\.|autotest|occ|issue|indie|db_|console)".extraConfig = ''
-            deny all;
-          '';
-          "~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/)".extraConfig = ''
-            include ${config.services.nginx.package}/conf/uwsgi_params;
-            uwsgi_modifier1 14;
-            uwsgi_hide_header Strict-Transport-Security;
-            uwsgi_hide_header X-Content-Type-Options;
-            uwsgi_hide_header X-Download-Options;
-            uwsgi_hide_header X-Frame-Options;
-            uwsgi_hide_header X-Permitted-Cross-Domain-Policies;
-            uwsgi_hide_header X-Robots-Tag;
-            uwsgi_hide_header X-XSS-Protection;
-            uwsgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
-            uwsgi_pass unix:${nc.uwsgiSocket};
-          '';
-          "~ ^/(?:updater|ocs-provider)(?:$|/)".extraConfig = ''
-            try_files $uri/ =404;
-            index index.php;
-          '';
-          "~ \.(?:css|js|woff|svg|gif)$".extraConfig = ''
-            try_files $uri /index.php$uri$is_args$args;
-            add_header Cache-Control "public, max-age=15778463";
-            add_header Strict-Transport-Security "max-age=15768000; includeSubDomains;";
-            add_header X-Content-Type-Options nosniff;
-            add_header X-Frame-Options "SAMEORIGIN";
-            add_header X-XSS-Protection "1; mode=block";
-            add_header X-Robots-Tag none;
-            add_header X-Download-Options noopen;
-            add_header X-Permitted-Cross-Domain-Policies none;
-            access_log off;
-          '';
-          "~ \.(?:png|html|ttf|ico|jpg|jpeg)$".extraConfig = ''
-            try_files $uri /index.php$uri$is_args$args;
-            # Optional: Don't log access to other assets
-            access_log off;
-          '';
-        };
+          }
+
+          location ~ ^/(?:\.htaccess|config|db_structure\.xml|README) {
+              deny all;
+          }
+
+          location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+              deny all;
+          }
+
+          location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
+              deny all;
+          }
+
+          location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/) {
+              include ${config.services.nginx.package}/conf/uwsgi_params;
+              uwsgi_modifier1 14;
+              uwsgi_hide_header Strict-Transport-Security;
+              uwsgi_hide_header X-Content-Type-Options;
+              uwsgi_hide_header X-Download-Options;
+              uwsgi_hide_header X-Frame-Options;
+              uwsgi_hide_header X-Permitted-Cross-Domain-Policies;
+              uwsgi_hide_header X-Robots-Tag;
+              uwsgi_hide_header X-XSS-Protection;
+              uwsgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
+              uwsgi_pass unix:${nc.uwsgiSocket};
+          }
+
+          location ~ ^/(?:updater|ocs-provider)(?:$|/) {
+              try_files $uri/ =404;
+              index index.php;
+          }
+
+          location ~ \.(?:css|js|woff|svg|gif)$ {
+              try_files $uri /index.php$uri$is_args$args;
+              add_header Cache-Control "public, max-age=15778463";
+              add_header Strict-Transport-Security "max-age=15768000; includeSubDomains;";
+              add_header X-Content-Type-Options nosniff;
+              add_header X-Frame-Options "SAMEORIGIN";
+              add_header X-XSS-Protection "1; mode=block";
+              add_header X-Robots-Tag none;
+              add_header X-Download-Options noopen;
+              add_header X-Permitted-Cross-Domain-Policies none;
+              access_log off;
+          }
+
+          location ~ \.(?:png|html|ttf|ico|jpg|jpeg)$ {
+              try_files $uri /index.php$uri$is_args$args;
+              # Optional: Don't log access to other assets
+              access_log off;
+          }
+        '';
       };
     };
     services.uwsgi = {
