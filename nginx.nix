@@ -9,6 +9,7 @@
 { config, pkgs, ... }: {
   services.nginx = {
     enable = true;
+    clientMaxBodySize = "1G";
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     virtualHosts."files.azazel.it" = {
