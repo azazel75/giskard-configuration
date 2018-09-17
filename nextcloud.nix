@@ -169,6 +169,7 @@
       enable = true;
       user = "nginx";
       group = "nginx";
+      plugins = [ "php" ];
       instance = {
         type = "emperor";
         vassals = {
@@ -178,20 +179,26 @@
             vacuum = true;
             processes = 16;
             cheaper = 1;
-            php-sapi-name = "apache"; # opcode caching tweak
-            php-allowed-ext = [ ".php" ".inc" ];
             socket-modifier1 = 14;
+            php-allowed-ext = [ ".php" ".inc" ];
             php-index = "index.php";
+            php-sapi-name = "apache"; # opcode caching tweak
             php-set = [
               "date.timezone=Europe/Berlin"
               "opcache.enable=1"
-              "opcache.enable_cli=1"
-              "opcache.interned_strings_buffer=8"
-              "opcache.max_accelerated_files=10000"
-              "opcache.memory_consumption=128"
-              "opcache.save_comments=1"
-              "opcache.revalidate_freq=1"
             ];
+            php-ini = (pkgs.writeText "php.ini" ''
+              [PHP]
+              zend_extension=opcache.so
+              [opcache]
+              opcache.enable=1
+              opcache.enable_cli=1
+              opcache.interned_strings_buffer=8
+              opcache.max_accelerated_files=10000
+              opcache.memory_consumption=128
+              opcache.save_comments=1
+              opcache.revalidate_freq=1
+            '');
             env = [
               "NEXTCLOUD_CONFIG_DIR=${nc.configDir}"
             ];
@@ -200,7 +207,6 @@
           };
         };
       };
-      plugins = [ "php" ];
     };
     systemd.services."nextcloud_cron" = {
       description = "Nextcloud cron";
