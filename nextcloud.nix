@@ -177,8 +177,8 @@
             socket = nc.uwsgiSocket;
             master = true;
             vacuum = true;
-            processes = 16;
-            cheaper = 1;
+            processes = 50;
+            cheaper = 5;
             socket-modifier1 = 14;
             php-allowed-ext = [ ".php" ".inc" ];
             php-index = "index.php";
