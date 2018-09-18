@@ -15,6 +15,6 @@
           isReadOnly = false;
         };
       };
-      config = import ./nextcloud.nix;
+      config = import ./nextcloud;
     };
   }

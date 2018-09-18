@@ -12,7 +12,7 @@
     imports =
       [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
-        ./containers.nix
+        ./containers
         ./services.nix
       ];
 
