@@ -13,6 +13,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     bash
+    findutils
     gnumake
   ];
 

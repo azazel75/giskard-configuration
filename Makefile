@@ -10,6 +10,7 @@ DEST := root@giskard
 COPY_CLOSURE := .copy_closure
 CREATE_PROFILE := .profile_created
 ACTIVATE_PROFILE := .profile-activated
+NIX_SRCS := $(shell find -name '*.nix')
 
 .PHONY: build
 build: result
@@ -33,7 +34,7 @@ print_option-%:
 	$(info ➤➤ Printing config option $*...)
 	@nix-instantiate --eval --strict --attr config.$* ./nixos.nix
 
-result: *.nix
+result: $(NIX_SRCS)
 	$(info ➤➤ Building configuration...)
 	@nix-build --attr system ./nixos.nix
 
