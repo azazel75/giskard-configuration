@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+# :Project:   giskard -- nix-shell entry point
+# :Created:   mar 18 set 2018 20:57:12 CEST
+# :Author:    Alberto Berti <alberto@metapensiero.it>
+# :License:   GNU General Public License version 3 or later
+# :Copyright: © 2018 Alberto Berti
+#
+
 with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
