@@ -1,14 +1,14 @@
 with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
-  name = "giskardd-shell";
+  name = "giskard-shell";
 
   buildInputs = [
     bash
     gnumake
   ];
 
-  stable-rev = "32c008a946c73035d2f4273dcaec281e1d6021d1";
+  stable-rev = "9fa6a261fb237f68071b361a9913ed1742d5e082";
   unstable-rev = "56b9f6fc8e1c3a4ad10ff7c61e461d7b7e038833";
 
   shellHook = ''
