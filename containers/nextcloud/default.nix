@@ -229,7 +229,6 @@
       enable = true;
       path = [ pkgs.sudo ];
       script = ''
-        set -x
         mkdir -p ${nc.configDir} ${nc.dataDir} ${nc.apps2Dir} \
           ${nc.homeDir}/skeleton
         if ! [ -e ${nc.homeDir}/database-created ]; then
