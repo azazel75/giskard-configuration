@@ -23,6 +23,11 @@ create_profile: $(CREATE_PROFILE)
 .PHONY: activate_profile
 activate_profile: $(ACTIVATE_PROFILE)
 
+.PHONY: print_option-%
+print_option-%:
+	$(info ➤➤ Printing config option $*...)
+	@nix-instantiate --eval --strict --attr config.$* ./nixos.nix
+
 result: *.nix
 	$(info ➤➤ Building configuration...)
 	nix-build --attr system ./nixos.nix

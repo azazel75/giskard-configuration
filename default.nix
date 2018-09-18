@@ -29,5 +29,9 @@ stdenv.mkDerivation rec {
     function deploy () {
       make -L activate_profile
     }
+
+    function print_option () {
+      make print_option-$1
+    }
   '';
 }
