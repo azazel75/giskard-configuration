@@ -23,6 +23,11 @@ create_profile: $(CREATE_PROFILE)
 .PHONY: activate_profile
 activate_profile: $(ACTIVATE_PROFILE)
 
+.PHONY: clean
+clean:
+	$(info ➤➤ Cleaning up build products...)
+	@rm -f result $(COPY_CLOSURE) $(CREATE_PROFILE) $(ACTIVATE_PROFILE)
+
 .PHONY: print_option-%
 print_option-%:
 	$(info ➤➤ Printing config option $*...)
