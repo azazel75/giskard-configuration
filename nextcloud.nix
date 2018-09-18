@@ -17,7 +17,7 @@
       mailDomain = "azazel.it";
       domain = "files.azazel.it";
       userName = "nextcloud";
-      password = "prossimanuvola2018";
+      password = (pkgs.lib.readFile ./secret/nextcloud-postgres);
       uwsgiSocket  = "/run/uwsgi/nextcloud.sock";
     };
     ncConf = pkgs.stdenv.mkDerivation rec {
