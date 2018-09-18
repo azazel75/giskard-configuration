@@ -24,18 +24,22 @@ create_profile: $(CREATE_PROFILE)
 activate_profile: $(ACTIVATE_PROFILE)
 
 result: *.nix
+	$(info ➤➤ Building configuration...)
 	nix-build --attr system ./nixos.nix
 
 $(COPY_CLOSURE): result
+	$(info ➤➤ Copying packages to $(DEST)...)
 	nix copy --to ssh://$(DEST) ./result
 	@touch $@
 
 $(CREATE_PROFILE):
 $(CREATE_PROFILE): $(COPY_CLOSURE)
+	$(info ➤➤ Creating new profile on $(DEST)...)
 	ssh $(DEST) nix-env --profile /nix/var/nix/profiles/system --set $(realpath result)
 	@touch $@
 
 $(ACTIVATE_PROFILE):
 $(ACTIVATE_PROFILE): $(CREATE_PROFILE)
+	$(info ➤➤ Activating profile on $(DEST)...)
 	ssh $(DEST) $(realpath result)/bin/switch-to-configuration switch
 	@touch $@
