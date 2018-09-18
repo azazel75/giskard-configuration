@@ -144,44 +144,4 @@
     # should.
     system.stateVersion = "18.09"; # Did you read the comment?
 
-    # environment.etc."kubernetes/users".text = ''
-    #     kubernetes,admin,0,"system:masters"
-    #   '';
-    # services.kubernetes.roles = [ "master" "node"];
-    # services.kubernetes.apiserver.basicAuthFile = /etc/kubernetes/users;
-    # services.kubernetes.apiserver.extraOpts = "-v4";
-    # services.kubernetes.kubelet.extraOpts = "--fail-swap-on=false --authorization-mode=AlwaysAllow";
-    # services.kubernetes.package = unstable.kubernetes;
-    # services.kubernetes.addons.dns.enable = true;
-    # services.kubernetes.addons.dashboard.enable = true;
-    # services.kubernetes.apiserver.port = 10200;
-
-    #services.kubernetes.proxy.extraOpts = "-v4";
-    # services.kubernetes.kubelet.networkPlugin = "cni";
-    # services.kubernetes.kubelet.cni.config = [{
-    #   "cniVersion" = "0.2.0";
-    #   "name" = "mynet";
-    #   "type" = "bridge";
-    #   "bridge" = "cbr0";
-    #   "isGateway" = true;
-    #   "ipMasq" = true;
-    #   "ipam" = {
-    #     "type" = "host-local";
-    #     "subnet" = "10.10.0.0/16";
-    #     "routes" = [ { "dst" = "0.0.0.0/0"; } ];
-    #   };
-    # } {
-    #   "cniVersion" = "0.2.0";
-    #   "type" = "loopback";
-    # }];
-    # virtualisation.docker.extraOptions = "--bridge=cbr0 -l debug";
-    # networking.bridges.cbr0 = {
-    #   interfaces = [];
-    # };
-    # networking.interfaces.cbr0 = {
-    #   ipv4.addresses = [{
-    #     address = "10.10.0.1";
-    #     prefixLength = 16;}];
-    # };
-    # programs.sysdig.enable = true;
   }
