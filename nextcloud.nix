@@ -175,6 +175,12 @@
         vassals = {
           nextcloud = {
             socket = nc.uwsgiSocket;
+            # the following value is to prevent connection errors from
+            # nginx (the default is 128) see also
+            # boot.kernel.sysctl."net.core.somaxconn" and:
+            # http://man7.org/linux/man-pages/man2/listen.2.html
+            # https://stackoverflow.com/questions/44581719/resource-temporarily-unavailable-using-uwsgi-nginx
+            listen = 1024;
             master = true;
             vacuum = true;
             processes = 50;

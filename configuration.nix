@@ -22,6 +22,13 @@
     boot.loader.grub.device = "/dev/sda";
     boot.loader.efi.efiSysMountPoint = "/boot/efi";
     boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernel.sysctl = {
+      # the following value is to prevent connection errors from
+      # nginx (the default is 128) to the nextcloud uwsgi process.
+      # http://man7.org/linux/man-pages/man2/listen.2.html
+      # https://stackoverflow.com/questions/44581719/resource-temporarily-unavailable-using-uwsgi-nginx
+      "net.core.somaxconn" = 1024;
+    };
 
     networking.hostName = "giskard.lan"; # Define your hostname.
     networking.hosts."127.0.0.1" = [
