@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
     }
 
     function print_option () {
-      make print_option-$1
+      make -L print_option-$1
     }
   '';
 }

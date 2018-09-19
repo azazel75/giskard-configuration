@@ -30,8 +30,8 @@ clean:
 	@rm -f result $(COPY_CLOSURE) $(CREATE_PROFILE) $(ACTIVATE_PROFILE)
 
 .PHONY: print_option-%
-print_option-%:
-	$(info ➤➤ Printing config option $*...)
+print_option-%: result
+	$(info ➤➤ Printing config option "$*"...)
 	@nix-instantiate --eval --strict --attr config.$* ./nixos.nix
 
 result: $(NIX_SRCS)
