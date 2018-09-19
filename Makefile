@@ -54,3 +54,6 @@ $(ACTIVATE_PROFILE): $(CREATE_PROFILE)
 	$(info ➤➤ Activating profile on $(DEST)...)
 	@ssh $(DEST) $(realpath result)/bin/switch-to-configuration switch
 	@touch $@
+
+README.html: README.rst
+	@nix run nixpkgs.python3 nixpkgs.python3Packages.docutils -c rst2html5 $< > $@
