@@ -6,14 +6,19 @@
 # :Copyright: © 2018 Alberto Berti
 #
 
-{ config, pkgs, ... }: {
-  imports = [
-    ./samba.nix
-    ./nginx.nix
-    ./postfix.nix
-  ];
-  services = {
-    openssh.enable = true;
-    slimserver.enable = true;
-  };
+{ config, pkgs, ... }: let
+    slimserver-fix = import (fetchTarball "https://github.com/phile314/nixpkgs/archive/slimserver-fix.tar.gz") {
+      config.allowUnfree = true;
+    };
+  in {
+    imports = [
+      ./samba.nix
+      ./nginx.nix
+      ./postfix.nix
+    ];
+    services = {
+      openssh.enable = true;
+      slimserver.enable = true;
+      slimserver.package = slimserver-fix.slimserver;
+    };
 }
