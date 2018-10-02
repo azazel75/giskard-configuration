@@ -8,6 +8,8 @@
 
 { config, pkgs, ... }:
   let
+    unstable-pkgs = import <unstable> {};
+    nextcloud-pkg = unstable-pkgs.nextcloud;
     nc = rec {
       homeDir = "/var/lib/nextcloud";
       configDir = "${homeDir}/etc";
@@ -24,11 +26,11 @@
       buildInputs = [ pkgs.makeWrapper ];
       name = "nextcloud-commands";
       php = pkgs.php + /bin/php;
-      occ = pkgs.nextcloud + /occ;
+      occ = nextcloud-pkg + /occ;
       inherit (nc) homeDir dataDir apps2Dir password domain mailDomain
         userName;
       dbName = userName;
-      appsDir = pkgs.nextcloud + /apps;
+      appsDir = nextcloud-pkg + /apps;
       installPhase = ''
         mkdir -p $out/bin
         makeWrapper $php $out/bin/nc-php --set \
@@ -55,7 +57,7 @@
         listen = [
           { addr = "0.0.0.0"; port = 18080; }
         ];
-        root = "${pkgs.nextcloud}";
+        root = "${nextcloud-pkg}";
         extraConfig = ''
           add_header Strict-Transport-Security "max-age=15768000;";
           add_header X-Content-Type-Options nosniff;
@@ -218,7 +220,7 @@
       description = "Nextcloud cron";
       after = [ "network.target" ];
       script = ''
-        ${ncConf}/bin/nc-php ${pkgs.nextcloud}/cron.php
+        ${ncConf}/bin/nc-php ${nextcloud-pkg}/cron.php
       '';
       serviceConfig.User = "nginx";
     };
