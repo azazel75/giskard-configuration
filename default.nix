@@ -17,8 +17,8 @@ stdenv.mkDerivation rec {
     gnumake
   ];
 
-  stable-rev = "9fa6a261fb237f68071b361a9913ed1742d5e082";
-  unstable-rev = "56b9f6fc8e1c3a4ad10ff7c61e461d7b7e038833";
+  stable-rev = "66fd61163a863505730fa9920ba1e8a33350db65";
+  unstable-rev = "46651b82b87318e37440c15a639d49ec05e79b79";
 
   shellHook = ''
     export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stable-rev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstable-rev}.tar.gz"
