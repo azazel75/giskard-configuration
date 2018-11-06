@@ -19,6 +19,9 @@
         locations."/" = {
           proxyPass = "http://files.azazel.it:18080";
         };
+        extraConfig = ''
+          proxy_max_temp_file_size 0;
+        '';
       };
       "azazel.it" = {
         enableACME = true;

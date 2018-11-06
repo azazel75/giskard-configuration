@@ -138,6 +138,7 @@
               uwsgi_hide_header X-Robots-Tag;
               uwsgi_hide_header X-XSS-Protection;
               uwsgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
+              uwsgi_max_temp_file_size 0;
               uwsgi_pass unix:${nc.uwsgiSocket};
           }
 
