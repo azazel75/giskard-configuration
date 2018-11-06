@@ -68,7 +68,7 @@
           add_header X-XSS-Protection "1; mode=block";
 
           index index.php;
-          client_max_body_size 1G;
+          client_max_body_size 10G;
 
           # Enable gzip but do not remove ETag headers
           gzip on;
