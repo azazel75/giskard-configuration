@@ -9,7 +9,7 @@
 { config, pkgs, ... }: {
   services.nginx = {
     enable = true;
-    clientMaxBodySize = "1G";
+    clientMaxBodySize = "10G";
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     virtualHosts = {
