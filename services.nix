@@ -20,5 +20,13 @@
       openssh.enable = true;
       slimserver.enable = true;
       slimserver.package = slimserver-fix.slimserver;
+      nfs.server = {
+        enable = true;
+        exports = ''
+          /mnt/musica   192.168.1.0/24(rw)
+          /mnt/books   192.168.1.0/24(rw)
+        '';
+      };
+      rpcbind.enable = true;
     };
 }
