@@ -198,6 +198,7 @@
             php-ini = (pkgs.writeText "php.ini" ''
               [PHP]
               zend_extension=opcache.so
+              memory_limit=512M
               [opcache]
               opcache.enable=1
               opcache.enable_cli=1
