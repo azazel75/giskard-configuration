@@ -21,6 +21,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "btrfs" ];
+  hardware.cpu.intel.updateMicrocode = true;
 
   fileSystems."/" =
   { device = "/dev/disk/by-uuid/d00efca5-54e2-435b-9b48-92fb1ed73db5";

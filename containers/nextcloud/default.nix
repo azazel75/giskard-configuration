@@ -68,7 +68,7 @@
           add_header X-XSS-Protection "1; mode=block";
 
           index index.php;
-          client_max_body_size 1G;
+          client_max_body_size 10G;
 
           # Enable gzip but do not remove ETag headers
           gzip on;
@@ -138,6 +138,7 @@
               uwsgi_hide_header X-Robots-Tag;
               uwsgi_hide_header X-XSS-Protection;
               uwsgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
+              uwsgi_max_temp_file_size 0;
               uwsgi_pass unix:${nc.uwsgiSocket};
           }
 
@@ -198,6 +199,7 @@
             php-ini = (pkgs.writeText "php.ini" ''
               [PHP]
               zend_extension=opcache.so
+              memory_limit=512M
               [opcache]
               opcache.enable=1
               opcache.enable_cli=1

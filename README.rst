@@ -42,13 +42,21 @@ How to use this repository
 
 You will have to clone it, replace my server's configuration with
 yours and change the ``DEST`` variable inside the ``Makefile``. You
-will have also to update the commit hashes in ``default.nix``, have a look here__.
+will have also to update the commit hashes in ``default.nix``, have a
+look here__.
 
 Then to activate the commands run the following in a terminal:
 
 .. code:: console
 
-  $ nix-shell
+  $ source env.sh
+
+This command will install Nix_ if it isn't installed already. In such
+case it will ask you for your password because it will need superuser
+privileges to create the ``/nix`` directory, where it will store its
+packages.
+
+__
 
 Then you will have the following commands at your disposal:
 

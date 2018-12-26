@@ -9,7 +9,7 @@
 { config, pkgs, ... }: {
   services.nginx = {
     enable = true;
-    clientMaxBodySize = "1G";
+    clientMaxBodySize = "10G";
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     virtualHosts = {
@@ -19,6 +19,9 @@
         locations."/" = {
           proxyPass = "http://files.azazel.it:18080";
         };
+        extraConfig = ''
+          proxy_max_temp_file_size 0;
+        '';
       };
       "azazel.it" = {
         enableACME = true;
