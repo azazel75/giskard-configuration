@@ -7,8 +7,7 @@
 #
 
 { config, pkgs, ... }: let
-    slimserver-fix = import (fetchTarball "https://github.com/phile314/nixpkgs/archive/slimserver-fix.tar.gz") {
-      config.allowUnfree = true;
+    unstable = import <unstable> { config.allowUnfree = true; };
     };
   in {
     imports = [
@@ -19,7 +18,7 @@
     services = {
       openssh.enable = true;
       slimserver.enable = true;
-      slimserver.package = slimserver-fix.slimserver;
+      slimserver.package = unstable.slimserver;
       nfs.server = {
         enable = true;
         exports = ''
