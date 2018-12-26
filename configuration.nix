@@ -52,6 +52,7 @@
     # $ nix-env -qaP | grep wget
     environment.systemPackages = with pkgs; [
       wget emacs zile kodiPlain lightdm i3 sakura tmux samba firefox
+      mldonkey
     ];
 
     # allow unfree packages
@@ -117,6 +118,9 @@
     users.extraUsers.azazel = {
       isNormalUser = true;
       uid = 1000;
+      extraGroups = [
+        "transmission"
+      ];
     };
 
     users.extraUsers.kodi = {
@@ -127,6 +131,9 @@
     users.extraUsers.emilia = {
       isNormalUser = true;
       uid = 1002;
+      extraGroups = [
+        "transmission"
+      ];
     };
 
     users.groups.musica = {
