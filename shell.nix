@@ -18,8 +18,8 @@ stdenv.mkDerivation rec {
   ];
 
   # latest channels publication of release 18.09
-  stable-rev = "bf7930d582bcf7953c3b87e649858f3f1873eb9c";
-  unstable-rev = "179b8146e668636fe59ef7663a6c8cd15d00db7e";
+  stable-rev = "c840631fe20d4ae13d2b1f9337a775fa861290f9";
+  unstable-rev = "44b02b52ea6a49674f124f50009299f192ed78bb";
 
   shellHook = ''
     export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stable-rev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstable-rev}.tar.gz"
