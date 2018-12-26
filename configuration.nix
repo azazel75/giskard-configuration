@@ -17,6 +17,7 @@
       ];
 
     # Use the systemd-boot EFI boot loader.
+    # boot.crashDump.enable = true;
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.grub.device = "/dev/sda";
