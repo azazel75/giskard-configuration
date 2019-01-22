@@ -58,6 +58,22 @@
         home = transHome;
         port = 7000;
       };
+      borgbackup = {
+        repos = {
+          ender = {
+            authorizedKeys = [
+              "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCoWtmwzsREPJ6kN8oSB8nyfGbE8wY9O6OmUqsZwtAViOcH27fzPpw6oKhXfXEeSVhcQlk3ffa38+KAhewhOTjW2skASuA7lhPTNF31N1dD+ZPQxWc7SCWsmtjhK9KySsd/clHIMRJqpvy7hQHgUTuTPqNE136er3LNyDaxCv1rx1qJBmlN/1PqZhgNybhnz3VCh59PqSeYqy+hkREXENdnx9xOq8zb3wclVw/b5c/l0YNq3Qk4HFa57r8iAcuZjItuwjANfh08UeEtCNuO0Ap1XChaXeFAw7P6pLORFaxjE7wbxSVfuGxxysLKWy8onebLqfqjCGphpUzvIKVMdQBFOf8a/vNLHbeiICpJ4l6dvJ+Omkpf6WDamepCbT3xftDLOzNTbqgToDPKq+Lt66etqqKqkaN+RKTgbUSYaJZWUTnPNKDjLYWWDKB2cXaFXInRcbLoDQy1jij9xanZWVEyOlTt3xE/maskagq+pvo4696+9U6T+KhJ8DXdbO6anOGZQxGD7cR+IMA3dUEcy4SZKp1R/xHvy0Fylj31ivyqNuyYybEN5IOZq7AcWnFJXkTYELfjbU14VAVlSjgBmcBy6ikkIsSwZ3R4Q5vs77d9+JpGF7oNHHNU1jrGMgFoy8QlqDQNEXzbG9+dcwtUR5jJ4Opp8Am2H3yxj3IjcsMDbw== /home/azazel/.ssh/id_rsa"
+            ];
+            path = /mnt/backups/borg/ender;
+          };
+          ligeti = {
+            authorizedKeys = [
+              "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5xqDl1+IYXzt9csNJcZxw9aAbtD9plBGunBecbb4X9l3I7mbNZOf6gY0V8t1aeoNEAoZUWnQXyWDtevlaxBSghyUK/0MIc6Nyj3A90P4L3UQA5kubjNqIh1t7/1zQtL0qU3Muxr3Ufne5jHkjrV3ZzOk5v/WRowxW/1s4xfDJN/TpsZvQ4jddzU7zZszqY/64M+cX4YmUGvBDVsW8DexkOfZerTJHcZXWN9IlWtXF+coq3/yKWM5sdC7x69pc881Yhvq526cdMFvbR1oleS1umTy6JT3TlixQWIYqmkxk85nNOSlx+vO417niddV976JmOax4PtMaPZ0nbeBp2Uf5 emilia@minipc"
+            ];
+            path = /mnt/backups/borg/ligeti;
+          };
+        };
+      };
     };
     systemd.services.mldonkey = {
         enable = true;
