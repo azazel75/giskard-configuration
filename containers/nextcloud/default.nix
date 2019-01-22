@@ -42,6 +42,12 @@
       '';
       phases = ["installPhase"];
     };
+    # stock "imagick" package depends on the "php" pkg but "uwsgi"
+    # depends on "php-embed", so here it is a new one with the right
+    # dependency
+    phpEmbedImagick = pkgs.phpPackages.imagick.overrideAttrs (old: {
+      buildInputs = [ pkgs.php-embed ] ++ (pkgs.lib.tail old.buildInputs);
+    });
   in {
     environment.systemPackages = with pkgs; [
       ncConf
@@ -198,8 +204,11 @@
             ];
             php-ini = (pkgs.writeText "php.ini" ''
               [PHP]
+              extension=${pkgs.phpPackages.apcu}/lib/php/extensions/apcu.so
+              extension=${phpEmbedImagick}/lib/php/extensions/imagick.so
               zend_extension=opcache.so
               memory_limit=512M
+
               [opcache]
               opcache.enable=1
               opcache.enable_cli=1
