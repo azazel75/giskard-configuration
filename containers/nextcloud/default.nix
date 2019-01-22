@@ -30,7 +30,7 @@
       inherit (nc) homeDir dataDir apps2Dir password domain mailDomain
         userName;
       dbName = userName;
-      appsDir = nextcloud-pkg + /apps;
+      appsDir = "$_ENV['NEXTCLOUD_PKG'] . '/apps'";
       installPhase = ''
         mkdir -p $out/bin
         makeWrapper $php $out/bin/nc-php --set \
@@ -211,6 +211,7 @@
             '');
             env = [
               "NEXTCLOUD_CONFIG_DIR=${nc.configDir}"
+              "NEXTCLOUD_PKG=${nextcloud-pkg}"
             ];
             plugins = [ "php" ];
             type = "normal";
