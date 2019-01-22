@@ -13,7 +13,7 @@ $CONFIG = array (
     ),
     1 =>
     array (
-      'path' => '@appsDir@',
+      'path' => @appsDir@,
       'url' => '/apps',
       'writable' => false,
     ),
@@ -38,4 +38,5 @@ $CONFIG = array (
   'debug' => false,
   'skeletondirectory' => '@homeDir@/skeleton',
   'updater.release.channel' => 'production',
+  'filelocking.enabled' => true,
 );
