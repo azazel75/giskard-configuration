@@ -48,6 +48,10 @@
     phpEmbedImagick = pkgs.phpPackages.imagick.overrideAttrs (old: {
       buildInputs = [ pkgs.php-embed ] ++ (pkgs.lib.tail old.buildInputs);
     });
+    # the same for apcu
+    phpEmbedApcu = pkgs.phpPackages.apcu.overrideAttrs (old: {
+      buildInputs = [ pkgs.php-embed ] ++ (pkgs.lib.tail old.buildInputs);
+    });
   in {
     environment.systemPackages = with pkgs; [
       ncConf
@@ -204,7 +208,7 @@
             ];
             php-ini = (pkgs.writeText "php.ini" ''
               [PHP]
-              extension=${pkgs.phpPackages.apcu}/lib/php/extensions/apcu.so
+              extension=${phpEmbedApcu}/lib/php/extensions/apcu.so
               extension=${phpEmbedImagick}/lib/php/extensions/imagick.so
               zend_extension=opcache.so
               memory_limit=512M

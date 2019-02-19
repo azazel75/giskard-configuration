@@ -39,4 +39,5 @@ $CONFIG = array (
   'skeletondirectory' => '@homeDir@/skeleton',
   'updater.release.channel' => 'production',
   'filelocking.enabled' => true,
+  'memcache.local' => '\OC\Memcache\APCu',
 );
