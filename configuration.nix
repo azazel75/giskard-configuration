@@ -54,7 +54,7 @@
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
     environment.systemPackages = with pkgs; [
-      wget emacs zile kodiPlain lightdm i3 sakura tmux samba firefox
+      wget emacs zile lightdm i3 sakura tmux samba firefox
       mldonkey
     ];
 
