@@ -11,11 +11,11 @@
 =========================
 
 This is the configuration of my home server named *Giskard*. Its
-configuration is made with `NixOS`__. I had it saved on the server
-as NixOS own `manual`__ recommends.
+configuration is made with NixOS__. I had it saved on the server
+as NixOS own manual__ recommends.
 
 After reading Gabriel's `NixOS in production`__ post I finally knew
-how to obtain a bare functionality like `NixOps`__, but without NixOps
+how to obtain a bare functionality like NixOps__, but without NixOps
 dependency and its "saved states". This a simple configuration for a
 single, *bare metal*, server and there's no metadata due to a cloud
 infrastructure being involved.
@@ -55,18 +55,16 @@ look here__.
 __ https://nixos.org/channels/
 
 
-Then to activate the commands run the following in a terminal:
-
-.. code:: console
+Then to activate the commands run the following in a terminal::
 
   $ source env.sh
 
-This command will install Nix_ if it isn't installed already. In such
+This command will install Nix__ if it isn't installed already. In such
 case it will ask you for your password because it will need superuser
 privileges to create the ``/nix`` directory, where it will store its
 packages.
 
-__
+__ https://nixos.org/nix/
 
 Then you will have the following commands at your disposal:
 
@@ -85,9 +83,7 @@ Then you will have the following commands at your disposal:
   option, much like NixOS own ``nixos-option`` command but instead
   looks up the value in the built configuration. If I want to know the
   value of the ``boot.kernel.sysctl`` option, I'll execute the
-  following:
-
-  .. code:: console
+  following::
 
     print_option boot.kernel.sysctl
     ➤➤ Printing config option "boot.kernel.sysctl"...
