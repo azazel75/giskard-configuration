@@ -37,6 +37,13 @@ condensed Gabriel's wisdom and that of others in the ``Makefile`` and
 
 - Secrets and passwords protected using `git crypt`__
 
+__ https://nixos.org
+__ https://nixos.org/nixos/manual/
+__ http://www.haskellforall.com/2018/08/nixos-in-production.html
+__ https://nixos.org/nixops/
+__ https://releases.nixos.org/nixos/18.09/nixos-18.09beta302.9fa6a261fb2/git-revision
+__ https://github.com/AGWA/git-crypt
+
 How to use this repository
 ==========================
 
@@ -44,6 +51,9 @@ You will have to clone it, replace my server's configuration with
 yours and change the ``DEST`` variable inside the ``Makefile``. You
 will have also to update the commit hashes in ``default.nix``, have a
 look here__.
+
+__ https://nixos.org/channels/
+
 
 Then to activate the commands run the following in a terminal:
 
@@ -85,11 +95,3 @@ Then you will have the following commands at your disposal:
 
 **clean**
   will delete the subproducts of *build* and *deploy* commands execution
-
-__ https://nixos.org
-__ https://nixos.org/nixos/manual/
-__ http://www.haskellforall.com/2018/08/nixos-in-production.html
-__ https://nixos.org/nixops/
-__ https://releases.nixos.org/nixos/18.09/nixos-18.09beta302.9fa6a261fb2/git-revision
-__ https://github.com/AGWA/git-crypt
-__ https://nixos.org/channels/
