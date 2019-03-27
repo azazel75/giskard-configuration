@@ -18,12 +18,13 @@ stdenv.mkDerivation rec {
     gnumake
   ];
 
-  # latest channels publication of release 18.09
-  stable-rev = "50f41ea2fcf86def32799f75577a4fe5cfd1132e";
-  unstable-rev = "36f316007494c388df1fec434c1e658542e3c3cc";
+  # nixos-18.09-small Released on 2019-03-02
+  stableRev = "80754f5cfd69d0caf8cff6795d3ce6d99479abde";
+  # nixos-unstable-small Released on 2019-03-02
+  unstableRev = "3d3e5cafa76233d43b647423b28d6bf0d5c66663";
 
   shellHook = ''
-    export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stable-rev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstable-rev}.tar.gz"
+    export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stableRev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstableRev}.tar.gz"
 
     function build () {
       make -L build
