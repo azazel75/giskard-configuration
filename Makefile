@@ -56,7 +56,7 @@ $(COPY_CLOSURE): $(SYSTEM_DERIVATION)
 
 $(SYSTEM_PACKAGE): $(COPY_CLOSURE)
 	$(info ➤➤ Building configuration on $(DEST)...)
-	ssh $(DEST) nix-store --realise $(shell cat $(SYSTEM_DERIVATION)) > $@
+	@ssh $(DEST) nix-store --realise $(shell cat $(SYSTEM_DERIVATION)) > $@
 
 $(CREATE_PROFILE): $(SYSTEM_PACKAGE)
 	$(info ➤➤ Creating new profile on $(DEST)...)
