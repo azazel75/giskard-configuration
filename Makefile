@@ -6,7 +6,6 @@
 # :Copyright: © 2018 Alberto Berti
 #
 
-DEST := root@giskard
 COPY_CLOSURE := .copy_closure
 CREATE_PROFILE := .profile_created
 ACTIVATE_PROFILE := .profile-activated

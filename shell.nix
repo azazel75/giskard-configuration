@@ -38,4 +38,5 @@ stdenv.mkDerivation rec {
       make -L print_option-$1
     }
   '';
+  DEST = "root@giskard";
 }
