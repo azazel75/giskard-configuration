@@ -76,7 +76,7 @@
       };
     };
     systemd.services.mldonkey = {
-        enable = true;
+        enable = false;
         wantedBy = [ "multi-user.target" ];
         after    = [ "network.target" ];
         environment = {
