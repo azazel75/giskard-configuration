@@ -48,8 +48,8 @@ How to use this repository
 ==========================
 
 You will have to clone it, replace my server's configuration with
-yours and change the ``DEST`` variable inside the ``Makefile``. You
-will have also to update the commit hashes in ``default.nix``, have a
+yours and change the ``DEST`` variable inside the ``shell.nix``. You
+will have also to update the commit hashes in ``shell.nix``, have a
 look here__.
 
 __ https://nixos.org/channels/
@@ -69,14 +69,20 @@ __ https://nixos.org/nix/
 Then you will have the following commands at your disposal:
 
 **build**
-  This command will build the configuration
+  This command will:
+
+  1. instantiate (i.e. evaluate the nix expression and generate the
+     derivation) the (configuration) *Nix* expression in ``nixos.nix``;
+  2. copy it to the destination server;
+  3. build the configuration on the same destination.
 
 **deploy**
   This command will perform the following actions:
 
-  1. copy the packages to the destination;
-  2. add a new profile's generation to the *system* profile
-  3. activate the new configuration
+  1. execute the **build** command;
+  2. add a new profile's generation to the *system* profile, that way
+     it can be rolled back if necessary;
+  3. activate the new configuration.
 
 **print_option** *<dotted config option>*
   This command allows you to know the final value of a configuration
