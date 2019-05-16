@@ -49,6 +49,15 @@
         "force group" = "books";
         "map archive" = false;
       };
+      torrents = {
+        path = "/mnt/data/transmission/scaricati";
+        browsable = true;
+        "read only" = false;
+        "guest ok" = true;
+        "write users" = [ "@users" ];
+        "force group" = "users";
+        "map archive" = false;
+      };
     };
   };
 }
