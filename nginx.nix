@@ -21,6 +21,13 @@
         };
         extraConfig = ''
           proxy_max_temp_file_size 0;
+          location = /.well-known/carddav {
+            return 301 https://$host/remote.php/dav/;
+          }
+
+          location = /.well-known/caldav {
+            return 301 https://$host/remote.php/dav/;
+          }
         '';
       };
       "azazel.it" = {
