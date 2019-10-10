@@ -18,10 +18,11 @@ stdenv.mkDerivation rec {
     gnumake
   ];
 
-  # nixos-19.03-small Released on 2019-07-22
-  stableRev = "a607a931f6f7db2ba97a9788d36192326c63c92f";
-  # nixos-unstable-small Released on 2019-07-14
-  unstableRev = "5eac339829b0f2dae6d49639178327d8f1b617fb";
+  # nixos-19.09-small Released on 2019-10-09
+  stableRev = "d5291756487d70bc336e33512a9baf9fa1788faf";
+  # nixos-unstable-small Released on 2019-09-30
+  #unstableRev = "3155fbff0adcd8abf762a5689de4af1c7b93b974";
+  unstableRev = stableRev;
 
   shellHook = ''
     export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stableRev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstableRev}.tar.gz"

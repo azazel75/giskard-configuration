@@ -13,13 +13,13 @@
         relay = "orphu.arstecnica.it";
         iface = config.networking.interfaces.enp1s0;
         ipv4 = (builtins.head iface.ipv4.addresses).address;
-        acmeDirectory = config.security.acme.directory;
-        sslCertificate = "${acmeDirectory}/${hostName}/fullchain.pem";
-        sslCertificateKey = "${acmeDirectory}/${hostName}/key.pem";
+        acmeDirectory = config.security.acme.certs.${hostName}.directory;
+        sslCertificate = "${acmeDirectory}/fullchain.pem";
+        sslCertificateKey = "${acmeDirectory}/key.pem";
       in {
         enable = true;
         enableHeaderChecks = false;
-       setSendmail = true;
+        setSendmail = true;
         hostname = hostName;
         destination = [
           "localhost"
