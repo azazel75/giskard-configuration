@@ -18,12 +18,21 @@
 
     # Use the systemd-boot EFI boot loader.
     # boot.crashDump.enable = true;
-    boot.loader.systemd-boot.enable = false;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.memtest86.enable = true;
-    boot.loader.efi.efiSysMountPoint = "/boot/efi";
+    boot.loader = {
+      systemd-boot.enable = false;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+        memtest86 = {
+          enable = true;
+          params = [ "consoleonly=1" "automode=1" ];
+        };
+      };
+    };
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.kernel.sysctl = {
       # the following value is to prevent connection errors from
