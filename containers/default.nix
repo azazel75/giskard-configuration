@@ -14,6 +14,10 @@
           hostPath = "/mnt/data/nextcloud";
           isReadOnly = false;
         };
+        "/mnt/musica" = {
+          hostPath = "/mnt/musica";
+          isReadOnly = true;
+        };
       };
       config = import ./nextcloud;
     };
