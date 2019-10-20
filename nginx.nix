@@ -33,6 +33,10 @@
       "azazel.it" = {
         enableACME = true;
       };
+      "pentagramma.metapensiero.it" = {
+        enableACME = true;
+        root = "/mnt/data/pentagramma";
+      };
     };
   };
 }

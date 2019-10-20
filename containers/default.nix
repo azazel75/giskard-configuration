@@ -18,6 +18,10 @@
           hostPath = "/mnt/musica";
           isReadOnly = true;
         };
+        "/mnt/pentagramma" = {
+          hostPath = "/mnt/data/pentagramma";
+          isReadOnly = false;
+        };
       };
       config = import ./nextcloud;
     };
