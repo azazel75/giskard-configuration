@@ -10,7 +10,7 @@
   services.samba = {
     enable = true;
     extraConfig = ''
-      auto services = alberto emilia
+      auto services = azazel emilia
       [homes]
       read only = no
       browsable = no
