@@ -18,14 +18,16 @@ stdenv.mkDerivation rec {
     gnumake
   ];
 
-  # nixos-19.09-small Released on 2019-10-09
-  stableRev = "d5291756487d70bc336e33512a9baf9fa1788faf";
-  # nixos-unstable-small Released on 2019-09-30
-  #unstableRev = "3155fbff0adcd8abf762a5689de4af1c7b93b974";
-  unstableRev = stableRev;
+  # last 19.03
+  oldstableRev = "3fdb468b47903dddffe1de178d48a886144ad56c";
+  # nixos-19.09-small Released on 2019-12-30
+  stableRev = "96c9578020133fe64feab90c00f3cb880d53ad0d";
+  # nixos-unstable-small Released on 2019-12-27
+  unstableRev = "b38c2839917252989ab4f34cf9254c7e2939329b";
+  #unstableRev = stableRev;
 
   shellHook = ''
-    export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stableRev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstableRev}.tar.gz"
+    export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stableRev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstableRev}.tar.gz:oldstable=https://github.com/NixOs/nixpkgs-channels/archive/${oldstableRev}.tar.gz"
 
     function build () {
       make -L build
