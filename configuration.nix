@@ -139,6 +139,9 @@
     users.extraUsers.kodi = {
       isNormalUser = true;
       uid = 1001;
+      extraGroups = [
+        "cdrom"
+      ];
     };
 
     users.extraUsers.emilia = {
