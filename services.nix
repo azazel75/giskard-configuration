@@ -8,6 +8,7 @@
 
 { config, pkgs, ... }: let
     unstable = import <unstable> { config.allowUnfree = true; };
+    oldstable = import <oldstable> { config.allowUnfree = true; };
     transHome = "/mnt/data/transmission";
     mldonkeyUser = "mldonkey";
     mldonkeyHome = "/mnt/data/mldonkey";
@@ -40,7 +41,7 @@
         '';
       };
       slimserver.enable = true;
-      slimserver.package = unstable.slimserver;
+      slimserver.package = oldstable.slimserver;
       nfs.server = {
         enable = true;
         exports = ''
