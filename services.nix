@@ -32,7 +32,13 @@
       ./postfix.nix
     ];
     services = {
-      openssh.enable = true;
+      openssh = {
+        enable = true;
+        gatewayPorts = "clientspecified";
+        extraConfig = ''
+          AllowTcpForwarding yes
+        '';
+      };
       slimserver.enable = true;
       slimserver.package = unstable.slimserver;
       nfs.server = {

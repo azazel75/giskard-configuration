@@ -33,6 +33,14 @@
       "azazel.it" = {
         enableACME = true;
       };
+      "demo.azazel.it" = {
+        enableACME = true;
+        forceSSL = true;
+        serverAliases = [ "demo.metapensiero.it" ];
+        locations."/" = {
+          proxyPass = "http://localhost:8888";
+        };
+      };
       "pentagramma.metapensiero.it" = {
         enableACME = true;
         root = "/mnt/data/pentagramma";
