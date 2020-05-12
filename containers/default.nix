@@ -22,6 +22,10 @@
           hostPath = "/mnt/data/pentagramma";
           isReadOnly = false;
         };
+        "/mnt/websites/emilia" = {
+          hostPath = "/mnt/data/websites/emilia";
+          isReadOnly = false;
+        };
       };
       config = import ./nextcloud;
     };

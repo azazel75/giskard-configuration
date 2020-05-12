@@ -78,6 +78,11 @@
         enableACME = true;
         root = "/mnt/data/pentagramma";
       };
+      "emiliacampagna.arstecnica.it" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/mnt/data/websites/emilia";
+      };
     };
   };
 }
