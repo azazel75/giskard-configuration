@@ -20,10 +20,10 @@ stdenv.mkDerivation rec {
 
   # last 19.03
   oldstableRev = "3fdb468b47903dddffe1de178d48a886144ad56c";
-  # nixos-19.09-small Released on 2019-12-30
-  stableRev = "96c9578020133fe64feab90c00f3cb880d53ad0d";
-  # nixos-unstable-small Released on 2019-12-27
-  unstableRev = "b38c2839917252989ab4f34cf9254c7e2939329b";
+  # nixos-19.09-small Released on 2020-03-17
+  stableRev = "bf7c0f0461e047bec108a5c5d5d1b144289a65ba";
+  # nixos-unstable-small Released on 2020-03-19
+  unstableRev = "9b3515eb95d9b3bc033f43cd562fe2b14f9efd86";
   #unstableRev = stableRev;
 
   shellHook = ''
