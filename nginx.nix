@@ -76,6 +76,7 @@
       };
       "pentagramma.metapensiero.it" = {
         enableACME = true;
+        forceSSL = true;
         root = "/mnt/data/pentagramma";
       };
       "emiliacampagna.arstecnica.it" = {
