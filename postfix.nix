@@ -10,7 +10,7 @@
     services.postfix =
       let
         hostName = "azazel.it";
-        relay = "orphu.arstecnica.it";
+        relay = "178.63.97.204"; #"orphu.arstecnica.it";
         iface = config.networking.interfaces.enp1s0;
         ipv4 = (builtins.head iface.ipv4.addresses).address;
         acmeDirectory = config.security.acme.certs.${hostName}.directory;
