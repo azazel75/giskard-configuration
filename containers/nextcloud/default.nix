@@ -9,7 +9,7 @@
 { config, pkgs, ... }:
   let
     unstable-pkgs = import <unstable> {};
-    nextcloud-pkg = unstable-pkgs.nextcloud;
+    nextcloud-pkg = pkgs.nextcloud18;
     nc = rec {
       homeDir = "/var/lib/nextcloud";
       configDir = "${homeDir}/etc";

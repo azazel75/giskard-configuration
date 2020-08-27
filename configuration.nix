@@ -42,6 +42,11 @@
       "net.core.somaxconn" = 1024;
     };
 
+    console = {
+      font = "Lat2-Terminus16";
+      keyMap = "it";
+    };
+
     networking.hostName = "giskard.lan"; # Define your hostname.
     networking.hosts."127.0.0.1" = [
       "localhost"
@@ -49,11 +54,9 @@
       "azazel.it"
     ];
 
-
     # Select internationalisation properties.
+    #
     i18n = {
-      consoleFont = "Lat2-Terminus16";
-      consoleKeyMap = "it";
       defaultLocale = "en_US.UTF-8";
     };
 
@@ -95,6 +98,10 @@
     networking.nameservers = [ "192.168.1.1" ];
     networking.hostId = "4f7bbe23";
 
+    security.acme = {
+      acceptTerms = true;
+      email = "alberto@metapensiero.it";
+    };
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;
