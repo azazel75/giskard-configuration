@@ -59,11 +59,12 @@
           incomplete-dir-enabled = true;
           rpc-host-whitelist = "*";
           rpc-host-whitelist-enabled = true;
-          rpc-whitelist = "192.168.1.*";
           rpc-whitelist-enabled = true;
+          rpc-whitelist = "192.168.1.*,192.168.10.*";
         };
         home = transHome;
         port = 7000;
+        # downloadDirPermissions = "775";
       };
       borgbackup = {
         repos = {
