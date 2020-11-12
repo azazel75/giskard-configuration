@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
   #unstableRev = stableRev;
 
   shellHook = ''
-    export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs-channels/archive/${stableRev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs-channels/archive/${unstableRev}.tar.gz:oldstable=https://github.com/NixOs/nixpkgs-channels/archive/${oldstableRev}.tar.gz"
+    export NIX_PATH="nixpkgs=https://github.com/NixOs/nixpkgs/archive/${stableRev}.tar.gz:unstable=https://github.com/NixOs/nixpkgs/archive/${unstableRev}.tar.gz:oldstable=https://github.com/NixOs/nixpkgs/archive/${oldstableRev}.tar.gz"
 
     function build () {
       make -L build
