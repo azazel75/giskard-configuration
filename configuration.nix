@@ -47,7 +47,8 @@
       keyMap = "it";
     };
 
-    networking.hostName = "giskard.lan"; # Define your hostname.
+    networking.domain = "lan";
+    networking.hostName = "giskard"; # Define your hostname.
     networking.hosts."127.0.0.1" = [
       "localhost"
       "files.azazel.it"
@@ -66,13 +67,15 @@
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
     environment.systemPackages = with pkgs; [
-      wget emacs zile lightdm i3 sakura tmux samba #firefox
-      mldonkey
+      wget emacs zile lightdm i3 sakura tmux samba firefox chromium
+      xdotool
     ];
 
     # allow unfree packages
     nixpkgs.config.allowUnfree = true;
-
+    nixpkgs.config.permittedInsecurePackages = [
+      "nextcloud-19.0.6"
+    ];
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     programs.bash.enableCompletion = true;
@@ -109,15 +112,16 @@
     services.xserver.xkbOptions = "eurosign:e";
     services.xserver.windowManager.i3.enable = false;
     services.xserver.desktopManager.kodi.enable = true;
-    services.xserver.displayManager.lightdm = {
-      enable = true;
+    services.xserver.displayManager = {
+      lightdm = {
+        enable = true;
+        autoLogin.timeout = 40;
+      };
       autoLogin = {
         enable = true;
         user = "kodi";
-        timeout = 20;
       };
     };
-
     services.wakeonlan.interfaces = [
       {interface = "enp1s0"; method = "magicpacket";}
     ];

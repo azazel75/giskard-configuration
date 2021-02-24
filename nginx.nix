@@ -70,6 +70,7 @@
             '';
           };
           "azazel.it" = {
+            addSSL = true;
             enableACME = true;
             root = "/mnt/data/websites/azazel/.neuron/output";
             extraConfig = ''
@@ -107,7 +108,7 @@
       };
       logrotate = {
         enable = true;
-        config = ''
+        extraConfig = ''
           weekly
           rotate 8
 
