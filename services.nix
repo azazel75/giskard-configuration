@@ -82,6 +82,23 @@
           };
         };
       };
+      awstats = {
+        enable = true;
+        updateAt = "hourly";
+        configs = {
+          azazel = {
+            domain = "azazel.it";
+            logFile = "/var/log/nginx/azazel.it-access.log";
+            webService = {
+              enable = true;
+              hostname = "azazel.it";
+            };
+            extraConfig = {
+              DNSLookup = "1";
+            };
+          };
+        };
+      };
     };
     systemd.services.mldonkey = {
         enable = false;
