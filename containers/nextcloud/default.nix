@@ -34,6 +34,7 @@
         dbport = "";
         dbtableprefix = "oc_";
       };
+      webfinger = true;
     };
      services.nginx = {
       enable = true;
