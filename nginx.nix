@@ -104,6 +104,15 @@
               access_log ${logsBase}/emiliacampagna-access.log combined;
             '';
           };
+          "viaggi.metapensiero.it" = {
+            enableACME = true;
+            forceSSL = true;
+            root = "/mnt/data/websites/viaggi";
+            extraConfig = ''
+              error_log ${logsBase}/viaggi-error.log;
+              access_log ${logsBase}/viaggi-access.log combined;
+            '';
+          };
         };
       };
       logrotate = {

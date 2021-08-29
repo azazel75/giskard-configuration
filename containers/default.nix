@@ -30,6 +30,10 @@
           hostPath = "/mnt/data/websites/azazel";
           isReadOnly = false;
         };
+        "/mnt/websites/viaggi" = {
+          hostPath = "/mnt/data/websites/viaggi";
+          isReadOnly = false;
+        };
       };
       config = import ./nextcloud;
     };
