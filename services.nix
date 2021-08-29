@@ -99,6 +99,18 @@
           };
         };
       };
+      grocy = {
+        enable = true;
+        hostName = "grocy.azazel.it";
+        settings = {
+          currency = "EUR";
+          culture = "it";
+          calendar = {
+            showWeekNumber = true;
+            firstDayOfWeek = 1;
+          };
+        };
+      };
     };
     systemd.services.mldonkey = {
         enable = false;
