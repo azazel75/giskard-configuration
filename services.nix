@@ -26,6 +26,15 @@
       concatStringsSep " " (mapAttrsToList
         (name: value: "-${name} ${value}")
         opts);
+    slimold = oldstable.slimserver.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ (with oldstable.perlPackages; [
+        ArchiveExtract
+        ArchiveTar
+        ArchiveTarWrapper
+        ArchiveZip
+        CacheCache
+      ]);
+    });
   in {
     imports = [
       ./samba.nix
@@ -41,7 +50,7 @@
         '';
       };
       slimserver.enable = true;
-      slimserver.package = oldstable.slimserver;
+      slimserver.package = slimold;
       nfs.server = {
         enable = true;
         exports = ''
