@@ -26,6 +26,18 @@
       concatStringsSep " " (mapAttrsToList
         (name: value: "-${name} ${value}")
         opts);
+    slimserver = unstable.slimserver.overrideAttrs (old: {
+      version = "8.2.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "Logitech";
+        repo = "slimserver";
+        rev = "refs/tags/7.9.1";
+        sha256 = "0wdh6gacvxgyaic0nn6iaca1hnwx7pb201lahahwxmgd58wnjj7c";
+      };
+      buildInputs = old.buildInputs ++ [
+        unstable.perlPackages.CacheCache
+      ];
+    });
     slimold = oldstable.slimserver.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ (with oldstable.perlPackages; [
         ArchiveExtract
