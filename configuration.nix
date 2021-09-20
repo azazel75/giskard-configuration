@@ -6,8 +6,18 @@
 # :Copyright: © 2018 Alberto Berti
 #
 
-{ config, pkgs, ... }: let
+{ config, pkgs, ... }:
+  let
     unstable = import <unstable> {};
+    kodiDistro = pkgs.kodi.withPackages (kpkgs: with kpkgs; [
+      inputstreamhelper
+      inputstream-adaptive
+      inputstream-ffmpegdirect
+      inputstream-rtmp
+      pvr-iptvsimple
+      vfs-sftp
+      vfs-libarchive
+    ]);
   in {
     imports =
       [ # Include the results of the hardware scan.
@@ -111,7 +121,10 @@
     services.xserver.layout = "it";
     services.xserver.xkbOptions = "eurosign:e";
     services.xserver.windowManager.i3.enable = false;
-    services.xserver.desktopManager.kodi.enable = true;
+    services.xserver.desktopManager.kodi = {
+      enable = true;
+      package = kodiDistro;
+    };
     services.xserver.displayManager = {
       lightdm = {
         enable = true;
