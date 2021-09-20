@@ -18,12 +18,14 @@ stdenv.mkDerivation rec {
     gnumake
   ];
 
+  # nixos-20.09-small Released on 2021-04-05
+  #oldstableRev = "b103839d00505bbaa9f9beff26e3d0f6a3abf6df";
   # last 19.09 of 2020-06-20
   oldstableRev = "289466dd6a11c65a7de4a954d6ebf66c1ad07652";
-  # nixos-20.09-small Released on 2021-04-05
-  stableRev = "b103839d00505bbaa9f9beff26e3d0f6a3abf6df";
-  # nixos-unstable-small Released on 2021-04-05
-  unstableRev = "fae6b041601b9fa0e42e799736c212748cba9d6e";
+  # nixos-21.05 Released on 2021-08-29
+  stableRev = "74d017edb6717ad76d38edc02ad3210d4ad66b96";
+  # nixos-unstable Released on 2021-08-29
+  unstableRev = "21c937f8cb1e6adcfeb36dfd6c90d9d9bfab1d28";
   #unstableRev = stableRev;
 
   shellHook = ''

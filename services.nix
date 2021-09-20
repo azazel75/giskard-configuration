@@ -154,5 +154,7 @@
       group = "users";
       home = mldonkeyHome;
       createHome = true;
+      isNormalUser = false;
+      isSystemUser = true;
     };
 }
