@@ -3,19 +3,18 @@
 # :Created:   dom 16 set 2018 22:08:28 CEST
 # :Author:    Alberto Berti <alberto@metapensiero.it>
 # :License:   GNU General Public License version 3 or later
-# :Copyright: © 2018 Alberto Berti
+# :Copyright: © 2018, 2022 Alberto Berti
 #
 
 { config, pkgs, ... }:
   let
     unstable = import <unstable> {};
-    kodiDistro = pkgs.kodi.withPackages (kpkgs: with kpkgs; [
+    kodiDistro = unstable.kodi.withPackages (kpkgs: with kpkgs; [
       inputstreamhelper
       inputstream-adaptive
       inputstream-ffmpegdirect
       inputstream-rtmp
       pvr-iptvsimple
-      vfs-sftp
       vfs-libarchive
     ]);
   in {
@@ -135,10 +134,6 @@
         user = "kodi";
       };
     };
-    services.wakeonlan.interfaces = [
-      {interface = "enp1s0"; method = "magicpacket";}
-    ];
-
     virtualisation.docker = {
       enable = true;
       liveRestore = true;

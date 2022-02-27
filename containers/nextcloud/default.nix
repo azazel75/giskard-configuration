@@ -3,12 +3,12 @@
 # :Created:   dom 16 set 2018 22:12:01 CEST
 # :Author:    Alberto Berti <alberto@metapensiero.it>
 # :License:   GNU General Public License version 3 or later
-# :Copyright: © 2018 Alberto Berti
+# :Copyright: © 2018, 2022 Alberto Berti
 #
 
 { config, pkgs, ... }:
   let
-    nextcloud-pkg = pkgs.nextcloud20;
+    nextcloud-pkg = pkgs.nextcloud23;
     nc = rec {
       homeDir = "/var/lib/nextcloud";
       configDir = "${homeDir}/config";
@@ -16,7 +16,7 @@
       mailDomain = "azazel.it";
       domain = "files.azazel.it";
       userName = "nextcloud";
-      password = (pkgs.lib.readFile ../../secret/nextcloud-postgres);
+      passFile = "${configDir}/nextcloud-postgres";
     };
   in {
     services.nextcloud = {
@@ -25,12 +25,12 @@
       package = nextcloud-pkg;
       https = true;
       config = {
-        adminpass = "not_used";
+        adminpassFile = nc.passFile;
         dbtype = "pgsql";
         dbuser = nc.userName;
         dbhost = "localhost";
         dbname = nc.userName;
-        dbpass = nc.password;
+        dbpassFile = nc.passFile;
         dbport = "";
         dbtableprefix = "oc_";
       };

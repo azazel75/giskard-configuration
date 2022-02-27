@@ -3,7 +3,7 @@
 # :Created:   dom 16 set 2018 21:57:41 CEST
 # :Author:    Alberto Berti <alberto@metapensiero.it>
 # :License:   GNU General Public License version 3 or later
-# :Copyright: © 2018 Alberto Berti
+# :Copyright: © 2018, 2022 Alberto Berti
 #
 
 { config, pkgs, ... }: let
@@ -82,10 +82,10 @@
           rpc-host-whitelist-enabled = true;
           rpc-whitelist-enabled = true;
           rpc-bind-address = "0.0.0.0";
+          rpc-port = 7000;
           rpc-whitelist = "192.168.1.*,192.168.10.*";
         };
         home = transHome;
-        port = 7000;
         downloadDirPermissions = "775";
       };
       borgbackup = {
